@@ -232,7 +232,7 @@
 //***********************************************MOTOR OUTPUT SETTINGS**************************************************
 
 // minimum motor output: *for brushed a % value (0.0 - 100.0)   *for brushless this sets digital idle % for DSHOT for any selection
-#define MOTOR_MIN_COMMAND  5.0
+#define MOTOR_MIN_COMMAND  0.0
 
 // *************invert yaw pid for "PROPS OUT" configuration - This feature is switchable to "PROPS IN" when active with stick gesture DOWN-UP-DOWN, Save selection with DOWN-DOWN-DOWN
 #define INVERT_YAW_PID
