@@ -488,38 +488,33 @@ if ( time - timestart < CAL_TIME )
 void acc_cal(void)
 {
 	accelcal[2] = 2048;
+	
 	for (int y = 0; y < 500; y++)
-	  {
-		  sixaxis_read();
-		  for (int x = 0; x < 3; x++)
-		    {
-			    lpf(&accelcal[x], accel[x], 0.92);
-		    }
-		  gettime();	// if it takes too long time will overflow so we call it here
+	{
+		sixaxis_read();
 
-	  }
+		for (int x = 0; x < 3; x++)
+		{
+			lpf(&accelcal[x], accel[x], 0.92);
+		}
+
+		gettime();	// if it takes too long time will overflow so we call it here
+	}
+
 	accelcal[2] -= 2048;
-		
 
-#ifdef FLASH_SAVE2
+	#ifdef FLASH_SAVE2
 	for (int x = 0; x < 3; x++)
-	  {
-		  limitf(&accelcal[x], 127);
-	  }
-#endif
+	{
+		limitf(&accelcal[x], 127);
+	}
+	#endif
       
-#ifdef FLASH_SAVE1
+	#ifdef FLASH_SAVE1
 	for (int x = 0; x < 3; x++)
-	  {
-		  limitf(&accelcal[x], 500);
-	  }
-#endif
+	{
+		limitf(&accelcal[x], 500);
+	}
+	#endif
 		
 }
-
-
-
-
-
-
-
