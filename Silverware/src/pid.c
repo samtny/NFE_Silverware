@@ -66,9 +66,9 @@ float stickTransitionProfileB[3]  = { 0.3 , 0.3 , 0.0};           //keep values 
 
 //6mm & 7mm Abduction Pids for whoops (Team Alienwhoop)- set filtering ALIENWHOOP_ZERO_FILTERING or default beta filters
 //                         ROLL       PITCH     YAW
-//float pidkp[PIDNUMBER] = {21.5e-2 , 21.5e-2  , 10.5e-1 }; 
-//float pidki[PIDNUMBER] = { 14e-1  , 15e-1 , 15e-1 };	
-//float pidkd[PIDNUMBER] = { 7.4e-1 , 7.4e-1  , 5.5e-1 };
+float pidkp[PIDNUMBER] = {21.5e-2 , 21.5e-2  , 10.5e-1 }; 
+float pidki[PIDNUMBER] = { 14e-1  , 15e-1 , 15e-1 };	
+float pidkd[PIDNUMBER] = { 7.4e-1 , 7.4e-1  , 5.5e-1 };
 
 
 //BOSS 7 with 716 motors and 46mm Props - set filtering to BETA_FILTERING and adjust pass 1 and pass 2 for KALMAN_GYRO both to 70hz, set DTERM_LPF_2ND_HZ to 120hz, disable motor filtering
@@ -113,9 +113,9 @@ float stickTransitionProfileB[3]  = { 0.3 , 0.3 , 0.0};           //keep values 
 
 // (OLD) BOSS 8.5 - 820 motors, kingkong 66mm props  - set filtering to STRONG_FILTERING
 //                         ROLL       PITCH     YAW
-float pidkp[PIDNUMBER] = { 29.5e-2 , 29.5e-2  , 11.5e-1 }; 
-float pidki[PIDNUMBER] = { 12e-1  , 12e-1 , 12.0e-1 };	
-float pidkd[PIDNUMBER] = {17.5e-1 , 17.5e-1  , 7e-1 };
+//float pidkp[PIDNUMBER] = { 29.5e-2 , 29.5e-2  , 11.5e-1 }; 
+//float pidki[PIDNUMBER] = { 12e-1  , 12e-1 , 12.0e-1 };	
+//float pidkd[PIDNUMBER] = {17.5e-1 , 17.5e-1  , 7e-1 };
 
 
 //*********************************Saved Initial PIDs****************************************
