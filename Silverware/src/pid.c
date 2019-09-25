@@ -113,21 +113,10 @@ float stickTransitionProfileB[3]  = { 0.3 , 0.3 , 0.0};           //keep values 
 
 // (OLD) BOSS 8.5 - 820 motors, kingkong 66mm props  - set filtering to STRONG_FILTERING
 //                         ROLL       PITCH     YAW
-//float pidkp[PIDNUMBER] = { 29.5e-2 , 29.5e-2  , 11.5e-1 }; 
-//float pidki[PIDNUMBER] = { 12e-1  , 12e-1 , 12.0e-1 };	
-//float pidkd[PIDNUMBER] = {17.5e-1 , 17.5e-1  , 7e-1 };
+float pidkp[PIDNUMBER] = { 29.5e-2 , 29.5e-2  , 11.5e-1 }; 
+float pidki[PIDNUMBER] = { 12e-1  , 12e-1 , 12.0e-1 };	
+float pidkd[PIDNUMBER] = {17.5e-1 , 17.5e-1  , 7e-1 };
 
-// http://sirdomsen.diskstation.me/dokuwiki/doku.php?id=pid_sample_settings - "8.5mm Geared Frankenquad Based on WLToys V212"
-//                         ROLL       PITCH     YAW
-//float pidkp[PIDNUMBER] = { 10e-2, 10e-2, 7e-1 }; 
-//float pidki[PIDNUMBER] = { 3e-1, 3e-1, 7e-1 };	
-//float pidkd[PIDNUMBER] = { 6e-1, 6e-1, 5e-1 };
-
-// Micro Motor Warehouse CL-0820-17 8.5x20mm motors on a 240mm frame 140mm Traxxas Alias props
-//                         ROLL       PITCH     YAW
-float pidkp[PIDNUMBER] = { 5e-2, 5e-2, 3.5e-1 }; 
-float pidki[PIDNUMBER] = { 1.5e-1, 1.5e-1, 3.5e-1 };	
-float pidkd[PIDNUMBER] = { 3e-1, 3e-1, 2.5e-1 };
 
 //*********************************Saved Initial PIDs****************************************
 float pidkp_init[PIDNUMBER] = { 0, 0, 0 };

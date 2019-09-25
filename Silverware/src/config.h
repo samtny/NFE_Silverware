@@ -383,7 +383,9 @@
 // debug things ( debug struct and other)
 //#define DEBUG
 
-// http://sirdomsen.diskstation.me/dokuwiki/doku.php?id=pid_sample_settings - 8.5mm Geared Frankenquad Based on WLToys V212
-//#define SOFT_LPF_4TH_088HZ
-//#define MOTOR_CURVE_85MM_32KHZ
-//#define PWM_32KHZ
+
+
+
+
+
+
