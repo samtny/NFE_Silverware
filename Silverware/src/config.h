@@ -240,7 +240,7 @@
 // *************pwm frequency for motor control
 // *************a higher frequency makes the motors more linear
 // *************in Hz
-#define PWMFREQ 8000
+#define PWMFREQ 32000
 
 // *************clip feedforward attempts to resolve issues that occur near full throttle by adding any clipped motor commands to the next loop output
 //#define CLIP_FF
