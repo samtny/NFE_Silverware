@@ -113,10 +113,15 @@ float stickTransitionProfileB[3]  = { 0.3 , 0.3 , 0.0};           //keep values 
 
 // (OLD) BOSS 8.5 - 820 motors, kingkong 66mm props  - set filtering to STRONG_FILTERING
 //                         ROLL       PITCH     YAW
-float pidkp[PIDNUMBER] = { 29.5e-2 , 29.5e-2  , 11.5e-1 }; 
-float pidki[PIDNUMBER] = { 12e-1  , 12e-1 , 12.0e-1 };	
-float pidkd[PIDNUMBER] = {17.5e-1 , 17.5e-1  , 7e-1 };
+//float pidkp[PIDNUMBER] = { 29.5e-2 , 29.5e-2  , 11.5e-1 }; 
+//float pidki[PIDNUMBER] = { 12e-1  , 12e-1 , 12.0e-1 };	
+//float pidkd[PIDNUMBER] = {17.5e-1 , 17.5e-1  , 7e-1 };
 
+// Traxxas Alias with 8.5mm CL-0820-17 "Dark Edition" motors
+//                         ROLL       PITCH     YAW
+float pidkp[PIDNUMBER] = { 7.5e-2 , 7.5e-2 , 2.5e-1 }; 
+float pidki[PIDNUMBER] = { 0e-1 , 0e-1 , 0e-1 };	
+float pidkd[PIDNUMBER] = { 1e-1 , 1e-1 , 1e-1 };
 
 //*********************************Saved Initial PIDs****************************************
 float pidkp_init[PIDNUMBER] = { 0, 0, 0 };
