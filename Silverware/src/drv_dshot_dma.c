@@ -57,7 +57,7 @@
 #endif
 
 
-#include "project.h"
+#include "stm32f0xx.h"
 #include "defines.h"
 #include "drv_pwm.h"
 #include "drv_time.h"

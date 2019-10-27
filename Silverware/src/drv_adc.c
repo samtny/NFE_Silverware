@@ -1,4 +1,4 @@
-#include "project.h"
+#include "stm32f0xx.h"
 #include "drv_adc.h"
 #include "util.h"
 #include "defines.h"

@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-#include "project.h"
+#include "stm32f0xx.h"
 #include "drv_time.h"
 #include "led.h"
 #include "defines.h"

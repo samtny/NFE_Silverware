@@ -25,7 +25,7 @@ THE SOFTWARE.
 
 #include "binary.h"
 #include "drv_spi.h"
-#include "project.h"
+#include "stm32f0xx.h"
 #include "xn297.h"
 #include "drv_time.h"
 #include <stdio.h>

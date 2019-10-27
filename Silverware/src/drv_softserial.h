@@ -25,7 +25,7 @@ SOFTWARE.
 #ifndef DRV_SOFTSERIAL_H
 #define DRV_SOFTSERIAL_H
 
-#include "project.h"
+#include "stm32f0xx.h"
 #include "defines.h"
 #include "drv_time.h"
 

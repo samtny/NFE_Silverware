@@ -1,6 +1,6 @@
 
 #include "drv_time.h"
-#include "project.h"
+#include "stm32f0xx.h"
 #include "drv_spi.h"
 #include "binary.h"
 #include "defines.h"

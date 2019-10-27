@@ -25,7 +25,7 @@ THE SOFTWARE.
 // STM32 acro firmware
 // files of this project should be assumed MIT licence unless otherwise noted
 
-#include "project.h"
+#include "stm32f0xx.h"
 #include "defines.h"
 #include "led.h"
 #include "util.h"
