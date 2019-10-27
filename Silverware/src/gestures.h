@@ -1,9 +1,10 @@
-
 int gestures2( void);
+
 int gesture_sequence( int gesture);
+
 void gestures( void);
 
-// warning: using if x>GESTURE_UDR to check if pid gestures used
+// warning: using if x > GESTURE_UDR to check if pid gestures used
 enum gestures_enum{
     GESTURE_NONE = 0, 
     GESTURE_DDD,
@@ -17,7 +18,4 @@ enum gestures_enum{
 		GESTURE_RRR,
 		GESTURE_LLL,
 		GESTURE_DUD
-    
 };
-
-

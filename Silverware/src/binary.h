@@ -1,4 +1,3 @@
-
 // Binary 8 bit defines
 // PUBLIC DOMAIN
 // by silverx
@@ -6,7 +5,6 @@
 // no guarantees are made for the correctness of this file
 
 // the original idea comes from the arduino ide
-
 
 // obtained by this code
 /*
@@ -31,7 +29,6 @@ int main()
    return 0;
 }
 */
-
 
 #define B00000000 0
 #define B00000001 1
@@ -289,5 +286,3 @@ int main()
 #define B11111101 253
 #define B11111110 254
 #define B11111111 255
-
-
