@@ -25,30 +25,31 @@
 // STM32 acro firmware
 // files of this project should be assumed MIT licence unless otherwise noted
 
-#include "stm32f0xx.h"
-#include "defines.h"
-#include "led.h"
-#include "util.h"
-#include "sixaxis.h"
-#include "drv_adc.h"
-#include "drv_time.h"
-#include "drv_softi2c.h"
-#include "drv_pwm.h"
-#include "drv_gpio.h"
-#include "drv_serial.h"
-#include "rx.h"
-#include "drv_spi.h"
-#include "control.h"
-#include "pid.h"
-#include "drv_i2c.h"
-#include "buzzer.h"
-#include "drv_fmc2.h"
-#include "gestures.h"
-#include "binary.h"
-
 #include <stdio.h>
 #include <math.h>
 #include <inttypes.h>
+
+#include "drv_adc.h"
+#include "drv_fmc2.h"
+#include "drv_gpio.h"
+#include "drv_i2c.h"
+#include "drv_pwm.h"
+#include "drv_serial.h"
+#include "drv_softi2c.h"
+#include "drv_spi.h"
+#include "drv_time.h"
+
+#include "binary.h"
+#include "buzzer.h"
+#include "control.h"
+#include "defines.h"
+#include "gestures.h"
+#include "led.h"
+#include "pid.h"
+#include "rx.h"
+#include "sixaxis.h"
+#include "stm32f0xx.h"
+#include "util.h"
 
 #ifdef USE_SERIAL_4WAY_BLHELI_INTERFACE
 #include "drv_softserial.h"
