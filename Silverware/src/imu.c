@@ -1,4 +1,6 @@
 
+#include "imu.h"
+
 // library headers
 #include <stdbool.h>
 #include <inttypes.h>

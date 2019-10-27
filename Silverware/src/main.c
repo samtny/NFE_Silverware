@@ -47,6 +47,7 @@
 #include "control.h"
 #include "defines.h"
 #include "gestures.h"
+#include "imu.h"
 #include "led.h"
 #ifdef ENABLE_OVERCLOCK
 #include "overclock.h"
@@ -70,7 +71,7 @@ debug_type debug;
 #endif
 
 // hal
-void imu_init(void);
+
 extern void flash_load(void);
 extern void flash_hard_coded_pid_identifier(void);
 
