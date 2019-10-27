@@ -36,6 +36,9 @@
 #include "drv_pwm.h"
 #include "drv_serial.h"
 #include "drv_softi2c.h"
+#ifdef USE_SERIAL_4WAY_BLHELI_INTERFACE
+#include "drv_softserial.h"
+#endif
 #include "drv_spi.h"
 #include "drv_time.h"
 
@@ -45,18 +48,19 @@
 #include "defines.h"
 #include "gestures.h"
 #include "led.h"
+#ifdef ENABLE_OVERCLOCK
+#include "overclock.h"
+#endif
 #include "pid.h"
 #include "rx.h"
+#ifdef USE_SERIAL_4WAY_BLHELI_INTERFACE
+#include "serial_4way.h"
+#endif
 #include "sixaxis.h"
 #include "stm32f0xx.h"
 #include "util.h"
 
-#ifdef USE_SERIAL_4WAY_BLHELI_INTERFACE
-#include "drv_softserial.h"
-#include "serial_4way.h"
-#endif
-
-#if defined (__GNUC__)&& !(defined (SOFT_LPF_NONE) || defined (GYRO_FILTER_PASS1) || defined (GYRO_FILTER_PASS2))
+#if defined (__GNUC__) && !(defined (SOFT_LPF_NONE) || defined (GYRO_FILTER_PASS1) || defined (GYRO_FILTER_PASS2))
 #warning the soft lpf may not work correctly with gcc due to longer loop time
 #endif
 
@@ -66,7 +70,6 @@ debug_type debug;
 #endif
 
 // hal
-void clk_init(void);
 void imu_init(void);
 extern void flash_load(void);
 extern void flash_hard_coded_pid_identifier(void);
@@ -137,7 +140,7 @@ int main(void)
   delay(1000);
 
   #ifdef ENABLE_OVERCLOCK
-  clk_init();
+  overclock();
   #endif
 
   gpio_init();

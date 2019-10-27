@@ -1,9 +1,11 @@
+#include "overclock.h"
+
 #include "stm32f0xx.h"
 #include "binary.h"
 #include "defines.h"
 
 // the clock is already set, we turn pll off and set a new multiplier
-void setclock(void)
+void overclock(void)
 {
 	// turn on HSI
 	RCC->CR |= 1;
@@ -57,22 +59,3 @@ void setclock(void)
 	}	
 #endif
 }
-
-void clk_init(void)
-{
-// reset clock to default values
-// sets clock to 48Mhz
-	
-// this executes anyway, it's in the .s file
-//	SystemInit();
-	
-//  SetSysClock();
-	
-#ifdef ENABLE_OVERCLOCK
-	// set clock to 64Mhz (PLL max multiplier)
-	setclock();
-#endif
-
-	
-}
-
