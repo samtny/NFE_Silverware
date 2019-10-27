@@ -46,6 +46,7 @@
 #include "buzzer.h"
 #include "control.h"
 #include "defines.h"
+#include "flash.h"
 #include "gestures.h"
 #include "imu.h"
 #include "led.h"
@@ -69,11 +70,6 @@
 #include "debug.h"
 debug_type debug;
 #endif
-
-// hal
-
-extern void flash_load(void);
-extern void flash_hard_coded_pid_identifier(void);
 
 // looptime in seconds
 float looptime;
