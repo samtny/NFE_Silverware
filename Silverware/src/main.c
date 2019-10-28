@@ -319,7 +319,6 @@ int main(void)
     control();
 
     // attitude calculations for level mode
-    extern void imu_calc(void);
     imu_calc();
 
     // battery low logic
