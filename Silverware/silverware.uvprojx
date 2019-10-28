@@ -626,6 +626,26 @@
               <FileType>1</FileType>
               <FilePath>.\src\serial_4way_avrootloader.c</FilePath>
             </File>
+            <File>
+              <FileName>overclock.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\overclock.h</FilePath>
+            </File>
+            <File>
+              <FileName>overclock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\overclock.c</FilePath>
+            </File>
+            <File>
+              <FileName>imu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\imu.h</FilePath>
+            </File>
+            <File>
+              <FileName>flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\flash.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -635,11 +655,6 @@
               <FileName>drv_adc.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\drv_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_clk.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\drv_clk.c</FilePath>
             </File>
             <File>
               <FileName>drv_fmc1.c</FileName>
