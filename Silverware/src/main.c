@@ -73,15 +73,19 @@ debug_type debug;
 
 // looptime in seconds
 float looptime;
+
 // filtered battery in volts
 float vbattfilt = 0.0;
 float vbatt_comp = 4.2;
+
 // voltage reference for vcc compensation
 float vreffilt = 1.0;
+
 // average of all motors
 float thrfilt = 0;
 
 unsigned int lastlooptime;
+
 // signal for lowbattery
 int lowbatt = 1;
 
@@ -125,10 +129,12 @@ int ledblink = 0;
 unsigned long ledcommandtime = 0;
 
 void failloop(int val);
+
 #ifdef USE_SERIAL_4WAY_BLHELI_INTERFACE
 volatile int switch_to_4way = 0;
 static void setup_4way_external_interrupt(void);
 #endif
+
 int random_seed = 0;
 
 int main(void)
@@ -270,15 +276,19 @@ int main(void)
   //
   //
 
+
   #ifdef USE_SERIAL_4WAY_BLHELI_INTERFACE
   setup_4way_external_interrupt();
   #endif
 
+  unsigned long curtime;
+
   while (1)
   {
     // gettime() needs to be called at least once per second
-    unsigned long time = gettime();
-    looptime = ((uint32_t)(time - lastlooptime));
+    curtime = gettime();
+
+    looptime = ((uint32_t)(curtime - lastlooptime));
 
     if (looptime <= 0)
       looptime = 1;
@@ -294,7 +304,7 @@ int main(void)
     debug.totaltime += looptime;
     lpf(&debug.timefilt, looptime, 0.998);
     #endif
-    lastlooptime = time;
+    lastlooptime = curtime;
 
     if (liberror > 20)
     {
@@ -560,7 +570,7 @@ int main(void)
     debug.cpu_load = (gettime() - lastlooptime) * 1e-3f;
     #endif
 
-    while ((gettime() - time) < LOOPTIME) ;
+    while ((gettime() - curtime) < LOOPTIME) ;
 
   } // end loop
 
