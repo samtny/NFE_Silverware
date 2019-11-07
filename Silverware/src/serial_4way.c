@@ -931,6 +931,31 @@ void esc4wayProcess()
     };
 }
 
+void esc4wayToggle(void) {
+  extern int onground;
 
+  if (onground)
+  {
+    NVIC_EnableIRQ(EXTI4_15_IRQn);
+
+    if (switch_to_4way)
+    {
+      switch_to_4way = 0;
+
+      NVIC_DisableIRQ(EXTI4_15_IRQn);
+      ledon(2);
+      esc4wayInit();
+      esc4wayProcess();
+      NVIC_EnableIRQ(EXTI4_15_IRQn);
+      ledoff(2);
+
+      lastlooptime = gettime();
+    }
+  }
+  else
+  {
+    NVIC_DisableIRQ(EXTI4_15_IRQn);
+  }
+}
 
 #endif

@@ -306,6 +306,7 @@ int main(void)
     debug.totaltime += looptime;
     lpf(&debug.timefilt, looptime, 0.998);
     #endif
+
     lastlooptime = curtime;
 
     if (liberror > 20)
@@ -373,30 +374,7 @@ int main(void)
     #endif
 
     #ifdef USE_SERIAL_4WAY_BLHELI_INTERFACE
-    extern int onground;
-
-    if (onground)
-    {
-      NVIC_EnableIRQ(EXTI4_15_IRQn);
-
-      if (switch_to_4way)
-      {
-        switch_to_4way = 0;
-
-        NVIC_DisableIRQ(EXTI4_15_IRQn);
-        ledon(2);
-        esc4wayInit();
-        esc4wayProcess();
-        NVIC_EnableIRQ(EXTI4_15_IRQn);
-        ledoff(2);
-
-        lastlooptime = gettime();
-      }
-    }
-    else
-    {
-      NVIC_DisableIRQ(EXTI4_15_IRQn);
-    }
+    esc4wayToggle();
     #endif
 
     // receiver function
