@@ -522,6 +522,8 @@ void lowbatt_calc(void) {
 
   float tempvolt = vbattfilt * (1.00f + CF1) - vbattfilt_corr * (CF1);
 
+  static float vdrop_factor_computed = VDROP_FACTOR;
+
   #ifdef AUTO_VDROP_FACTOR
 
   static float lastout[12];
@@ -569,8 +571,8 @@ void lowbatt_calc(void) {
 
   }
 
-  #undef VDROP_FACTOR
-  #define VDROP_FACTOR  minindex * 0.1f
+  vdrop_factor_computed = minindex * 0.1f;
+
   #endif
 
   float hyst;
@@ -580,13 +582,13 @@ void lowbatt_calc(void) {
   else
     hyst = 0.0f;
 
-  if ((tempvolt + (float)VDROP_FACTOR * thrfilt < (float)VBATTLOW + hyst)
+  if ((tempvolt + (float)vdrop_factor_computed * thrfilt < (float)VBATTLOW + hyst)
       || (vbattfilt < ( float )2.7f))
     lowbatt = 1;
   else
     lowbatt = 0;
 
-  vbatt_comp = tempvolt + (float)VDROP_FACTOR * thrfilt;
+  vbatt_comp = tempvolt + (float)vdrop_factor_computed * thrfilt;
 
   #ifdef DEBUG
   debug.vbatt_comp = vbatt_comp;
