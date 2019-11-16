@@ -99,31 +99,36 @@ void adc_init(void)
 
 float adc_read(int channel)
 {
-	switch(channel)
-	{
-		case 0:
-		#ifdef DEBUG
+  if (channel == 0) {
+    #ifdef DEBUG
 		lpf(&debug.adcfilt , (float) adcarray[0] , 0.998);
 		#endif	
+    
 		#ifdef USE_TWO_POINT_VOLTAGE_CORRECTION
+    
 		#define ACTUAL_BATTERY_VOLTAGE_RANGE (ACTUAL_BATTERY_VOLTAGE_HI - ACTUAL_BATTERY_VOLTAGE_LO)
 		#define REPORTED_TELEMETRY_VOLTAGE_RANGE (REPORTED_TELEMETRY_VOLTAGE_HI - REPORTED_TELEMETRY_VOLTAGE_LO)
-		// CorrectedValue = (((RawValue – RawLow) * ReferenceRange) / RawRange) + ReferenceLow
-		return ( ( ((float) adcarray[0] * (float) ADC_SCALEFACTOR) - (float) REPORTED_TELEMETRY_VOLTAGE_LO ) * ((float) ACTUAL_BATTERY_VOLTAGE_RANGE / (float) REPORTED_TELEMETRY_VOLTAGE_RANGE) ) + (float) ACTUAL_BATTERY_VOLTAGE_LO;
-		#else
-		return 			(float) adcarray[0] * ((float) (ADC_SCALEFACTOR*(ACTUAL_BATTERY_VOLTAGE/REPORTED_TELEMETRY_VOLTAGE))) ;
-		#endif
 		
-		case 1:
-        #ifdef DEBUG
+    // CorrectedValue = (((RawValue – RawLow) * ReferenceRange) / RawRange) + ReferenceLow
+		return ( ( ((float) adcarray[0] * (float) ADC_SCALEFACTOR) - (float) REPORTED_TELEMETRY_VOLTAGE_LO ) * ((float) ACTUAL_BATTERY_VOLTAGE_RANGE / (float) REPORTED_TELEMETRY_VOLTAGE_RANGE) ) + (float) ACTUAL_BATTERY_VOLTAGE_LO;
+		
+    #else
+    
+    #define ADC_SCALED_VOLTAGE ADC_SCALEFACTOR * (float)(ACTUAL_BATTERY_VOLTAGE / REPORTED_TELEMETRY_VOLTAGE)
+
+		return 			(float) adcarray[0] * ADC_SCALED_VOLTAGE;
+    
+		#endif
+  }
+  else if (channel == 1) {
+    #ifdef DEBUG
         lpf(&debug.adcreffilt , (float) adcarray[1] , 0.998);
         #endif	
 		return vref_cal / (float) adcarray[1];
-		
-		default:			
-	  return 0;
-	}
-	
+  }
+  else {
+    return 0;
+  }
 	
 }
 #else
