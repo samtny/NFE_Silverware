@@ -55,3 +55,9 @@ Temporary Items
 
 # Developer-specific keil files
 Silverware/silverware.uvguix.*
+
+# catbox
+Silverware/silverware.uvoptx
+Silverware/silverware.uvprojx
+Silverware/DebugConfig
+
