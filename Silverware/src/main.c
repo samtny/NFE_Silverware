@@ -496,32 +496,75 @@ void trigger_leds(void) {
 void lowbatt_calc(void) {
   // battery low logic
 
-  // read acd and scale based on processor voltage
-  float battadc = adc_read(0) * vreffilt;
+  float adc_read_0 = adc_read(0);
+
+  #ifdef DEBUG
+  debug.adc_read_0 = adc_read(0); // 3.8
+  debug.vreffilt = vreffilt; // 0.998
+  #endif
+
+  // read adc and scale based on processor voltage
+  float battadc = adc_read_0 * vreffilt;
+
+  #ifdef DEBUG
+  debug.battadc = battadc; // 0.998 * 3.8
+  #endif
+
+  float adc_read_1 = adc_read(1);
+  
+  #ifdef DEBUG
+  debug.adc_read_1 = adc_read(1); // 0.998
+  #endif
 
   // read and filter internal reference
-  lpf(&vreffilt, adc_read(1), 0.9968f);
+  lpf(&vreffilt, adc_read_1, 0.9968f);
 
   // average of all 4 motor thrusts
-  // should be proportional with battery current
+    // should be proportional with battery current
   extern float thrsum; // from control.c
+
+  #ifdef DEBUG
+  debug.thrsum = thrsum;
+  #endif
 
   // filter motorpwm so it has the same delay as the filtered voltage
   // ( or they can use a single filter)
   lpf(&thrfilt, thrsum, 0.9968f); // 0.5 sec at 1.6ms loop
                                   // time
 
+  #ifdef DEBUG
+  debug.thrfilt = thrfilt;
+  #endif
+
   float vbattfilt_corr = 4.2f * lipo_cell_count;
+
   // li-ion battery model compensation time decay ( 18 seconds )
-  lpf(&vbattfilt_corr, vbattfilt, FILTERCALC(1000, 18000e3));
+  static float filtercalc = FILTERCALC(1000, 18000e3);
+  #ifdef DEBUG
+  debug.filtercalc = filtercalc;
+  #endif
+  
+  lpf(&vbattfilt_corr, vbattfilt, filtercalc);
+
+  #ifdef DEBUG
+  debug.vbattfilt_corr = vbattfilt_corr; // 4.1998
+  #endif
 
   lpf(&vbattfilt, battadc, 0.9968f);
+
+  #ifdef DEBUG
+  debug.vbattfilt = vbattfilt;
+  #endif
 
   // compensation factor for li-ion internal model
   // zero to bypass
   #define CF1 0.25f
 
   float tempvolt = vbattfilt * (1.00f + CF1) - vbattfilt_corr * (CF1);
+
+  #ifdef DEBUG
+  debug.tempvolt = tempvolt;
+  #endif
 
   #ifdef AUTO_VDROP_FACTOR
 
@@ -581,7 +624,14 @@ void lowbatt_calc(void) {
   else
     hyst = 0.0f;
 
-  if ((tempvolt + (float)VDROP_FACTOR * thrfilt < (float)VBATTLOW + hyst)
+  float throttle_compensated_voltage = tempvolt + (float)VDROP_FACTOR * thrfilt;
+
+  #ifdef DEBUG
+  debug.vdrop_factor = VDROP_FACTOR;
+  debug.throttle_compensated_voltage = throttle_compensated_voltage;
+  #endif
+
+  if ((throttle_compensated_voltage < (float)VBATTLOW + hyst)
       || (vbattfilt < ( float )2.7f))
     lowbatt = 1;
   else
